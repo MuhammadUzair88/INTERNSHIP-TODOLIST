@@ -12,9 +12,12 @@ const Home = () => {
 
   const fetchTodos = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/todo", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URI}/api/todo`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setTodos(data.todos);
     } catch (error) {
       setMessage("❌ Failed to load todos");
